@@ -16,7 +16,6 @@ import com.cts.model.PageC;
 import com.cts.model.PageD;
 
 @PropertySource("classpath:sql.properties")
-@Transactional
 @Repository
 public class HierarchyDAO {
 	@PersistenceContext
