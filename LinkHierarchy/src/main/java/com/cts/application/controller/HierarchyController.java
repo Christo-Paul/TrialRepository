@@ -1,4 +1,4 @@
-package com.cts.controller;
+package com.cts.application.controller;
 
 import java.util.List;
 

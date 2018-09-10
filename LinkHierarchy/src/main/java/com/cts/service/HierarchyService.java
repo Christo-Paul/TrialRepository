@@ -7,7 +7,7 @@ import org.springframework.hateoas.Link;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.stereotype.Service;
 
-import com.cts.controller.HierarchyController;
+import com.cts.application.controller.HierarchyController;
 import com.cts.dao.HierarchyDAO;
 import com.cts.model.PageA;
 import com.cts.model.PageB;
