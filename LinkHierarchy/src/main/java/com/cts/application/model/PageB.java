@@ -1,4 +1,4 @@
-package com.cts.model;
+package com.cts.application.model;
 
 
 

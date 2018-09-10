@@ -1,4 +1,4 @@
-package com.cts.dao;
+package com.cts.application.dao;
 
 import java.util.List;
 
@@ -10,10 +10,10 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cts.model.PageA;
-import com.cts.model.PageB;
-import com.cts.model.PageC;
-import com.cts.model.PageD;
+import com.cts.application.model.PageA;
+import com.cts.application.model.PageB;
+import com.cts.application.model.PageC;
+import com.cts.application.model.PageD;
 
 @PropertySource("classpath:sql.properties")
 @Repository

@@ -1,4 +1,4 @@
-package com.cts.service;
+package com.cts.application.service;
 
 import java.util.List;
 
@@ -8,11 +8,11 @@ import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.stereotype.Service;
 
 import com.cts.application.controller.HierarchyController;
-import com.cts.dao.HierarchyDAO;
-import com.cts.model.PageA;
-import com.cts.model.PageB;
-import com.cts.model.PageC;
-import com.cts.model.PageD;
+import com.cts.application.dao.HierarchyDAO;
+import com.cts.application.model.PageA;
+import com.cts.application.model.PageB;
+import com.cts.application.model.PageC;
+import com.cts.application.model.PageD;
 
 @Service
 public class HierarchyService {

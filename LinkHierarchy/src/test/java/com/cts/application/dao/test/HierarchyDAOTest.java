@@ -1,8 +1,10 @@
-package com.cts.dao;
+package com.cts.application.dao.test;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import com.cts.application.dao.HierarchyDAO;
 
 public class HierarchyDAOTest {
 

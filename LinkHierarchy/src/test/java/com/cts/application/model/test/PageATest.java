@@ -1,10 +1,10 @@
-package com.cts.model.test;
+package com.cts.application.model.test;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.cts.model.PageA;
+import com.cts.application.model.PageA;
 
 public class PageATest {
 

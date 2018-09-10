@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cts.model.PageA;
-import com.cts.model.PageB;
-import com.cts.model.PageC;
-import com.cts.model.PageD;
-import com.cts.service.HierarchyService;
+import com.cts.application.model.PageA;
+import com.cts.application.model.PageB;
+import com.cts.application.model.PageC;
+import com.cts.application.model.PageD;
+import com.cts.application.service.HierarchyService;
 
 @RestController
 public class HierarchyController {
