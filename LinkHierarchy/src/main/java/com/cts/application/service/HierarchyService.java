@@ -30,6 +30,7 @@ public class HierarchyService {
 			pageA.add(link);
 
 		}
+		System.out.println(list.size()+"Unwanted");
 		return list;
 	}
 

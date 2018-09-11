@@ -12,7 +12,13 @@ import org.springframework.hateoas.ResourceSupport;
 @Entity // This tells Hibernate to make a table out of this class
 @Table(name="Page_A")
 public class PageA extends ResourceSupport {
-	  @Id
+	  @Override
+	public String toString() {
+		return "PageA [page_A_Id=" + page_A_Id + ", page_A_Name=" + page_A_Name + "]";
+	}
+
+
+	@Id
 	  @GeneratedValue(strategy=GenerationType.IDENTITY)
 	  private int page_A_Id;
 	  private String page_A_Name;
@@ -40,4 +46,16 @@ public class PageA extends ResourceSupport {
 	public PageA() {
 		// TODO Auto-generated constructor stub
 	}
+
+
+	public PageA(int page_A_Id, String page_A_Name) {
+		super();
+		this.page_A_Id = page_A_Id;
+		this.page_A_Name = page_A_Name;
+	}
+
+
+	
+
+	
 }

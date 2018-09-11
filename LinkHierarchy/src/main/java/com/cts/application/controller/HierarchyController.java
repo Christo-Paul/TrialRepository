@@ -3,6 +3,7 @@ package com.cts.application.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +20,7 @@ public class HierarchyController {
 	@Autowired
 	private HierarchyService hierarchyService;
 
-	@RequestMapping("/Banking")
+	@GetMapping("/Banking")
 	public List<PageA> getAllArticles() {
 		List<PageA> list = hierarchyService.getAllPageAContent();
 		return list;
@@ -46,7 +47,7 @@ public class HierarchyController {
 	}
 
 	@RequestMapping("{linknameB}/{linknameC}/{linknameD}/{noLinksAvailable}")
-	public String getPageEcontent(@PathVariable("linknameB") String link_nameB,
+	public String getNullcontent(@PathVariable("linknameB") String link_nameB,
 			@PathVariable("linknameC") String link_nameC, @PathVariable("linknameD") String link_nameD,
 			@PathVariable("noLinksAvailable") String noLinksAvailable) {
 		return "No More Further Subdivisions !!!";

@@ -23,6 +23,11 @@ public class PageC extends ResourceSupport {
 	@JoinColumn(name="page_B_Id",nullable = false)
 	private PageB pageB;
 
+	@Override
+	public String toString() {
+		return "PageC [page_C_Id=" + page_C_Id + ", page_C_Name=" + page_C_Name + ", pageB=" + pageB + "]";
+	}
+
 	public int getPage_C_Id() {
 		return page_C_Id;
 	}
@@ -49,5 +54,12 @@ public class PageC extends ResourceSupport {
 
 	public PageC() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public PageC(int page_C_Id, String page_C_Name, PageB pageB) {
+		super();
+		this.page_C_Id = page_C_Id;
+		this.page_C_Name = page_C_Name;
+		this.pageB = pageB;
 	}
 }

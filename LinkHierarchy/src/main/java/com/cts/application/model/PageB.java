@@ -52,5 +52,19 @@ public class PageB extends ResourceSupport {
 	public PageB() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public PageB(int page_B_Id, String page_B_Name, PageA pageA) {
+		super();
+		this.page_B_Id = page_B_Id;
+		this.page_B_Name = page_B_Name;
+		this.pageA = pageA;
+	}
+
+	@Override
+	public String toString() {
+		return "PageB [page_B_Id=" + page_B_Id + ", page_B_Name=" + page_B_Name + ", pageA=" + pageA + "]";
+	}
+	
+	
 	
 }

@@ -46,8 +46,20 @@ public class PageD extends ResourceSupport {
 	public void setPageC(PageC pageC) {
 		this.pageC = pageC;
 	}
+@Override
+	public String toString() {
+		return "PageD [page_D_Id=" + page_D_Id + ", page_D_Name=" + page_D_Name + ", pageC=" + pageC + "]";
+	}
+
 public PageD() {
 	// TODO Auto-generated constructor stub
+}
+
+public PageD(int page_D_Id, String page_D_Name, PageC pageC) {
+	super();
+	this.page_D_Id = page_D_Id;
+	this.page_D_Name = page_D_Name;
+	this.pageC = pageC;
 }
 
 }
