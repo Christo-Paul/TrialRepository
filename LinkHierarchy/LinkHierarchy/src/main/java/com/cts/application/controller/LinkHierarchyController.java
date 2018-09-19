@@ -15,12 +15,13 @@ import com.cts.application.model.PageD;
 import com.cts.application.service.LinkHierarchyService;
 
 @RestController
+@RequestMapping("/Banking")
 public class LinkHierarchyController {
 
 	@Autowired
 	private LinkHierarchyService hierarchyService;
 
-	@GetMapping("/Banking")
+	@GetMapping("/")
 	public List<PageA> getAllArticles() {
 		List<PageA> list = hierarchyService.getAllPageAContent();
 		return list;

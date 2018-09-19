@@ -3,17 +3,14 @@ package com.cts.application.configuration;
 import java.util.Properties;
 
 import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableTransactionManagement
 public class HibernateConfiguration {
 	@Value("${spring.datasource.driver}")
 	private String DRIVER;
@@ -33,7 +30,7 @@ public class HibernateConfiguration {
 	@Value("${entitymanager.packagesToScan}")
 	private String PACKAGES_TO_SCAN;
 
-	@Bean
+@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName(DRIVER);

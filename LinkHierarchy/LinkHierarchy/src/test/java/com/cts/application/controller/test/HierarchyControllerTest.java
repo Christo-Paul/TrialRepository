@@ -2,7 +2,6 @@ package com.cts.application.controller.test;
 
 import static org.junit.Assert.*;
 
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,7 +29,6 @@ import com.cts.application.service.LinkHierarchyService;
 
 import org.springframework.test.context.junit4.SpringRunner;
 
-
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = LinkHierarchyController.class, secure = false)
 public class HierarchyControllerTest {
@@ -56,12 +54,12 @@ public class HierarchyControllerTest {
 
 		Mockito.when(hierarchyService.getAllPageAContent()).thenReturn(pageAlist);
 
-		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/Banking").accept(MediaType.APPLICATION_JSON);
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/Banking/").accept(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
 		System.out.println(result.getResponse());
-		String expected = "[{\"page_A_Id\": 1,\"page_A_Name\": \"InvestmentBanking\", \"links\": [{ \"rel\": \"self\",\"href\": \"/InvestmentBanking\"}]}]";
+		String expected = "[{\"page_A_Id\": 1,\"page_A_Name\": \"InvestmentBanking\", \"links\": [{ \"rel\": \"self\",\"href\": \"/Banking/InvestmentBanking\"}]}]";
 		// [{"page_A_Id":1,"page_A_Name":"InvestmentBanking","links":[{"rel":"self","href":"/InvestmentBanking"}]}]
 
 		JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
@@ -78,13 +76,14 @@ public class HierarchyControllerTest {
 
 		Mockito.when(hierarchyService.getAllPageBContent(Mockito.anyString())).thenReturn(pageBlist);
 
-		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/Hello").accept(MediaType.APPLICATION_JSON);
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/Banking/anystring")
+				.accept(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
 		System.out.println(result.getResponse());
 
-		String expected = "[{\"page_B_Id\":1,\"page_B_Name\":\"CorporateFinance\",\"pageA\":{\"page_A_Id\":1,\"page_A_Name\":\"InvestmentBanking\",\"links\":[]},\"links\":[{\"rel\":\"self\",\"href\":\"/InvestmentBanking/CorporateFinance\"}]}]";
+		String expected = "[{\"page_B_Id\":1,\"page_B_Name\":\"CorporateFinance\",\"pageA\":{\"page_A_Id\":1,\"page_A_Name\":\"InvestmentBanking\",\"links\":[]},\"links\":[{\"rel\":\"self\",\"href\":\"/Banking/InvestmentBanking/CorporateFinance\"}]}]";
 
 		JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
 	}
@@ -101,13 +100,14 @@ public class HierarchyControllerTest {
 
 		Mockito.when(hierarchyService.getAllPageCContent(Mockito.anyString())).thenReturn(pageClist);
 
-		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/hello1/hello").accept(MediaType.APPLICATION_JSON);
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/Banking/InvestmentBanking/CorporateFinance")
+				.accept(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
 		System.out.println(result.getResponse());
 
-		String expected = "[{\"page_C_Id\":1,\"page_C_Name\":\"Industry_Coverage\",\"pageB\":{\"page_B_Id\":1,\"page_B_Name\":\"CorporateFinance\",\"pageA\":{\"page_A_Id\":1,\"page_A_Name\":\"InvestmentBanking\",\"links\":[]},\"links\":[]},\"links\":[{\"rel\":\"self\",\"href\":\"/InvestmentBanking/CorporateFinance/Industry_Coverage\"}]}]";
+		String expected = "[{\"page_C_Id\":1,\"page_C_Name\":\"Industry_Coverage\",\"pageB\":{\"page_B_Id\":1,\"page_B_Name\":\"CorporateFinance\",\"pageA\":{\"page_A_Id\":1,\"page_A_Name\":\"InvestmentBanking\",\"links\":[]},\"links\":[]},\"links\":[{\"rel\":\"self\",\"href\":\"/Banking/InvestmentBanking/CorporateFinance/Industry_Coverage\"}]}]";
 
 		JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
 
@@ -126,14 +126,15 @@ public class HierarchyControllerTest {
 
 		Mockito.when(hierarchyService.getAllPageDContent(Mockito.anyString())).thenReturn(pageDlist);
 
-		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/banking1/invygygytment/newbanking")
+		RequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/Banking/InvestmentBanking/CorporateFinance/Industry_Coverage")
 				.accept(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
 		System.out.println(result.getResponse());
 
-		String expected = "[{\"page_D_Id\":1,\"page_D_Name\":\"Healthcare\",\"pageC\":{\"page_C_Id\":1,\"page_C_Name\":\"Industry_Coverage\",\"pageB\":{\"page_B_Id\":1,\"page_B_Name\":\"CorporateFinance\",\"pageA\":{\"page_A_Id\":1,\"page_A_Name\":\"InvestmentBanking\",\"links\":[]},\"links\":[]},\"links\":[{\"rel\":\"self\",\"href\":\"/InvestmentBanking/CorporateFinance/Industry_Coverage/Healthcare\"}]},\"links\":[]}]";
+		String expected = "[{\"page_D_Id\":1,\"page_D_Name\":\"Healthcare\",\"pageC\":{\"page_C_Id\":1,\"page_C_Name\":\"Industry_Coverage\",\"pageB\":{\"page_B_Id\":1,\"page_B_Name\":\"CorporateFinance\",\"pageA\":{\"page_A_Id\":1,\"page_A_Name\":\"InvestmentBanking\",\"links\":[]},\"links\":[]},\"links\":[{\"rel\":\"self\",\"href\":\"/Banking/InvestmentBanking/CorporateFinance/Industry_Coverage/Healthcare\"}]},\"links\":[]}]";
 
 		JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
 
@@ -143,7 +144,8 @@ public class HierarchyControllerTest {
 	public void testGetNullcontent() throws Exception {
 
 		RequestBuilder requestBuilder = MockMvcRequestBuilders
-				.get("/InvestmentBanking/CorporateFinance/Industry_Coverage/Healthcare").accept(MediaType.ALL_VALUE);
+				.get("/Banking/InvestmentBanking/CorporateFinance/Industry_Coverage/Healthcare")
+				.accept(MediaType.ALL_VALUE);
 
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 

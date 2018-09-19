@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.cts.application.model.PageA;
 import com.cts.application.model.PageB;
 import com.cts.application.model.PageC;
 
